@@ -40,6 +40,12 @@ const initialState = [{
     header: somHeader,
     id: 'som',
     descricao: 'Curta suas músicas e seus filmes com a melhor qualidade!'
+  },{
+    nome: 'Som e imagem',
+    thumbnail: somThumb,
+    header: somHeader,
+    id: 'som',
+    descricao: 'Curta suas músicas e seus filmes com a melhor qualidade!'
   }];
 
   const categoriasSlice = createSlice({

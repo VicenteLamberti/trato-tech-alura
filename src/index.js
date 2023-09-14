@@ -4,12 +4,13 @@ import Navbar from './components/Navbar';
 import './index.css';
 import Router from './routes';
 import { Provider } from 'react-redux';
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <>
-      <Provider>
+      <Provider store={store}>
       <Router/>
       </Provider>
     

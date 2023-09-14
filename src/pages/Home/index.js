@@ -3,11 +3,13 @@ import styles from './Home.module.scss';
 import relogio from 'assets/inicial.png';
 
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
 export default function Home() {
   const navigate = useNavigate();
+  const categorias = useSelector(state=>state.categorias);
   return (
     <div>
       <Header

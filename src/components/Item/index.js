@@ -1,24 +1,35 @@
 import styles from './Item.module.scss';
-import { AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
-import { FaCartPlus} from 'react-icons/fa';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { FaCartPlus } from 'react-icons/fa';
+import { mudarFavorito } from '../../store/reducers/itens';
 
-const iconeProps={
-    size:24,
-    color:'#041833'
-}
-
-export default function Item(props){
+export default function Item(props) {
     const {
         titulo,
         foto,
         preco,
         descricao,
-        favorito
+        favorito,
+        id
     } = props;
-    return(
+
+
+    const iconeProps = {
+        size: 24,
+        color: '#041833'
+    }
+
+    function resolverFavorito() {
+        mudarFavorito(id)
+    }
+
+
+
+
+    return (
         <div className={styles.item}>
             <div className={styles['item-imagem']}>
-                <img src={foto} alt={titulo}/>
+                <img src={foto} alt={titulo} />
             </div>
             <div className={styles['item-descricao']}>
                 <div className={styles['item-titulo']}>
@@ -31,12 +42,12 @@ export default function Item(props){
                     </div>
                     <div className={styles['item-acoes']}>
                         {favorito
-                            ? <AiFillHeart {...iconeProps} color='#ff0000' className={styles['item-acao']}/>
-                            : <AiOutlineHeart className={styles['item-acao']}/>
+                            ? <AiFillHeart {...iconeProps} color='#ff0000' className={styles['item-acao']} onClick={resolverFavorito}/>
+                            : <AiOutlineHeart className={styles['item-acao']} onClick={resolverFavorito}/>
                         }
                         <FaCartPlus
                             {...iconeProps}
-                            color={true ? '#1875E8' : iconeProps.color }
+                            color={true ? '#1875E8' : iconeProps.color}
                             className={styles['item-acao']}
                         />
                     </div>

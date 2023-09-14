@@ -2,6 +2,7 @@ import styles from './Item.module.scss';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { FaCartPlus } from 'react-icons/fa';
 import { mudarFavorito } from '../../store/reducers/itens';
+import { useDispatch } from 'react-redux';
 
 export default function Item(props) {
     const {
@@ -20,9 +21,10 @@ export default function Item(props) {
     }
 
     function resolverFavorito() {
-        mudarFavorito(id)
+        dispatch(mudarFavorito(id));
     }
 
+    const dispatch = useDispatch();
 
 
 

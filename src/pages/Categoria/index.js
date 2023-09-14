@@ -4,7 +4,13 @@ import {useParams} from 'react-router-dom';
 
 export default function Categoria(){
     const {nomeCategoria} = useParams();
-    const categoria = useSelector(state=>state.categorias.find(categoria=>categoria.id === nomeCategoria))
+    const {categoria, itens} = useSelector(state=>{
+        return{
+            categoria:state.categorias.find(categoria=>categoria.id === nomeCategoria),
+            itens:state.itens.filter(item=>item.categoria ===nomeCategoria)
+        }
+    });
+    console.log( itens)
     return(
         <div>
             <Header

@@ -2,7 +2,7 @@ import styles from './Item.module.scss';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { FaCartPlus } from 'react-icons/fa';
 import { mudarFavorito } from '../../store/reducers/itens';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { mudarCarrinho } from 'store/reducers/carrinho';
 
 export default function Item(props) {
@@ -29,6 +29,7 @@ export default function Item(props) {
     }
 
     const dispatch = useDispatch();
+    const estaNoCarrinho = useSelector(state=>state.carrinho.some(itemNoCarrinho=>itemNoCarrinho.id === id))
 
 
 
@@ -53,7 +54,7 @@ export default function Item(props) {
                         }
                         <FaCartPlus
                             {...iconeProps}
-                            color={true ? '#1875E8' : iconeProps.color}
+                            color={estaNoCarrinho ? '#1875E8' : iconeProps.color}
                             className={styles['item-acao']}
                             onClick={resolverCarrinho}
                         />
